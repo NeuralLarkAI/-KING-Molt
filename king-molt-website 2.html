@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$KING Molt | The Kingdom Rises</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --royal-purple: #4A1A6B;
+            --deep-plum: #2D0F47;
+            --antique-gold: #D4AF37;
+            --bright-gold: #FFD700;
+            --warm-cream: #F5F1E8;
+            --midnight: #1B1B3A;
+            --lobster-red: #E8654F;
+            --shadow-lg: 0 20px 60px rgba(74, 26, 107, 0.3);
+            --shadow-xl: 0 30px 90px rgba(74, 26, 107, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, var(--deep-plum) 0%, var(--royal-purple) 50%, var(--midnight) 100%);
+            color: var(--warm-cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        /* Animated Background Elements */
+        .bg-decorative {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .crown-float {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.05;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .crown-float:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .crown-float:nth-child(2) { top: 60%; left: 80%; animation-delay: 5s; }
+        .crown-float:nth-child(3) { top: 80%; left: 20%; animation-delay: 10s; }
+        .crown-float:nth-child(4) { top: 30%; left: 70%; animation-delay: 15s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header/Navigation */
+        header {
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(27, 27, 58, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--antique-gold);
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .hero-crown {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: pulse 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--bright-gold) 0%, var(--antique-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 1rem;
+            color: var(--warm-cream);
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+        
+        .hero .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            margin-bottom: 3rem;
+            color: rgba(245, 241, 232, 0.8);
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Buttons */
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--antique-gold) 0%, var(--bright-gold) 100%);
+            color: var(--deep-plum);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--antique-gold);
+            border: 2px solid var(--antique-gold);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--antique-gold);
+            color: var(--deep-plum);
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--antique-gold);
+        }
+        
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(245, 241, 232, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Story Section */
+        .story-content {
+            background: rgba(27, 27, 58, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .story-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .story-content .highlight {
+            color: var(--antique-gold);
+            font-weight: 600;
+        }
+        
+        .story-finale {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bright-gold);
+            text-align: center;
+            margin-top: 2rem;
+            letter-spacing: 1px;
+        }
+        
+        /* Loyalty Cards */
+        .loyalty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .loyalty-card {
+            background: rgba(27, 27, 58, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .loyalty-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--antique-gold);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .loyalty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .loyalty-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--antique-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .loyalty-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(245, 241, 232, 0.9);
+        }
+        
+        /* King Section */
+        .king-content {
+            background: rgba(27, 27, 58, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--antique-gold);
+            box-shadow: var(--shadow-xl);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .king-content::before {
+            content: '🦞';
+            position: absolute;
+            top: -40px;
+            right: -20px;
+            font-size: 5rem;
+            opacity: 0.3;
+            transform: rotate(15deg);
+        }
+        
+        .king-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--bright-gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .king-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .king-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            text-align: center;
+            color: var(--antique-gold);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            font-style: italic;
+        }
+        
+        /* Token Info */
+        .token-info {
+            background: linear-gradient(135deg, rgba(74, 26, 107, 0.8) 0%, rgba(45, 15, 71, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--antique-gold);
+            box-shadow: var(--shadow-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .token-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .token-detail {
+            text-align: center;
+        }
+        
+        .token-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--antique-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .token-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--warm-cream);
+            word-break: break-all;
+        }
+        
+        .contract-address {
+            background: rgba(27, 27, 58, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-top: 2rem;
+        }
+        
+        .contract-address .token-label {
+            margin-bottom: 1rem;
+        }
+        
+        .contract-address .token-value {
+            font-family: monospace;
+            font-size: 1rem;
+            color: var(--bright-gold);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .contract-address .token-value:hover {
+            color: var(--warm-cream);
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            background: rgba(27, 27, 58, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .highlight-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .highlight-item p {
+            font-size: 1.1rem;
+            color: var(--warm-cream);
+        }
+        
+        /* Join Section */
+        .join-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .join-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .join-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .join-link {
+            background: rgba(27, 27, 58, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .join-link:hover {
+            transform: translateY(-10px);
+            border-color: var(--antique-gold);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .join-link .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .join-link h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--antique-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .join-link p {
+            font-size: 1rem;
+            color: rgba(245, 241, 232, 0.8);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(27, 27, 58, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+        
+        .footer-message {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--antique-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-disclaimer {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(245, 241, 232, 0.6);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-crown { font-size: 5rem; }
+            .loyalty-grid { grid-template-columns: 1fr; }
+            .cta-group { flex-direction: column; }
+            .story-content, .king-content, .token-info { padding: 2rem; }
+            section { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Background -->
+    <div class="bg-decorative">
+        <div class="crown-float">👑</div>
+        <div class="crown-float">🦞</div>
+        <div class="crown-float">👑</div>
+        <div class="crown-float">🦞</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">$KING MOLT</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-crown">👑</div>
+            <h1>All Hail $KING</h1>
+            <p class="subtitle">Where Diamond Hands Meet Royal Hearts</p>
+            <p class="tagline">Born in the shadows of Solana. Built by believers. Ruled by the people.</p>
+            <div class="cta-group">
+                <a href="#join" class="btn btn-primary">Join the Kingdom</a>
+                <a href="https://www.moltbook.com" target="_blank" class="btn btn-secondary">View on Moltbook</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Kingdom Story -->
+    <section id="story">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">The Kingdom Story</h2>
+                <p class="section-subtitle">From the Depths, A Legend Emerged 🦞</p>
+            </div>
+            <div class="story-content fade-in">
+                <p>Every great kingdom starts with a whisper. A few loyal subjects who believed when the world looked away. <span class="highlight">$KING Molt</span> didn't arrive with fanfare — it rose quietly, organically, from the heart of the Moltbook trenches where real ones gather.</p>
+                
+                <p>No empty promises. No manufactured hype. Just a community that showed up, day after day, night shift after night shift, believing in something bigger than a ticker symbol. We shed the old shell of pump-and-dump culture and built something different: <span class="highlight">a kingdom where holders aren't just numbers — they're family.</span></p>
+                
+                <p>The King doesn't just lead. He inspires. And together, we're writing a story that's ours to keep.</p>
+                
+                <p class="story-finale">The dawn has broken. The throne is ours. The kingdom is just beginning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Holders Stay Loyal -->
+    <section id="loyalty">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Why Holders Stay Loyal</h2>
+                <p class="section-subtitle">What Makes This Kingdom Different 👑</p>
+            </div>
+            <div class="loyalty-grid">
+                <div class="loyalty-card fade-in">
+                    <span class="loyalty-icon">💎</span>
+                    <h3>Diamond Hands, Golden Hearts</h3>
+                    <p>We don't chase green candles — we build foundations. Our holders aren't here for the sprint; they're here for the saga. Through dips and rips, the kingdom stands strong because we believe in us.</p>
+                </div>
+                <div class="loyalty-card fade-in">
+                    <span class="loyalty-icon">🌙</span>
+                    <h3>Night Shift Believers</h3>
+                    <p>While others sleep, the kingdom builds. We show up in the quiet hours, holding the line, sharing the vision, and welcoming new subjects with open arms. No bots. No grifters. Just real humans who care.</p>
+                </div>
+                <div class="loyalty-card fade-in">
+                    <span class="loyalty-icon">🦞</span>
+                    <h3>No Excuses, Only Evolution</h3>
+                    <p>Like the molt itself, we embrace transformation. We don't make excuses when the market moves — we adapt, we grow, we shed what doesn't serve us. This community thrives on resilience, not excuses.</p>
+                </div>
+                <div class="loyalty-card fade-in">
+                    <span class="loyalty-icon">🏰</span>
+                    <h3>Community Over Everything</h3>
+                    <p>Forget influencer shills and paid promotions. This kingdom was built by holders, for holders. You're not buying a token — you're claiming your seat at the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the King -->
+    <section id="king">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Meet the King</h2>
+            </div>
+            <div class="king-content fade-in">
+                <h3 class="king-name">@KingMolt89217 — The Leader Who Listens</h3>
+                <p>Every kingdom needs a heart, and ours beats with the King. But here's what makes him different: he doesn't rule from an ivory tower. He's in the trenches with us, listening, engaging, inspiring without ego.</p>
+                
+                <p>King Molt didn't demand a following — he earned it. Through authenticity, consistency, and genuine care for this community, he's shown us what leadership looks like in a space crowded with grifters. He doesn't promise lambos or moon missions. He promises truth, effort, and a community that values people over pumps.</p>
+                
+                <p>When you hold $KING, you're not just supporting a token — you're standing with a leader who believes the real wealth is the kingdom we build together.</p>
+                
+                <p class="king-quote">He leads. We follow. Together, we rise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Info -->
+    <section id="token">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Know Your Kingdom</h2>
+                <p class="section-subtitle">📜</p>
+            </div>
+            <div class="token-info fade-in">
+                <div class="token-details">
+                    <div class="token-detail">
+                        <div class="token-label">Ticker</div>
+                        <div class="token-value">$KING</div>
+                    </div>
+                    <div class="token-detail">
+                        <div class="token-label">Chain</div>
+                        <div class="token-value">Solana ⚡</div>
+                    </div>
+                </div>
+                
+                <div class="contract-address">
+                    <div class="token-label">Contract Address</div>
+                    <div class="token-value" onclick="copyToClipboard(this.textContent)" title="Click to copy">8bDjEfE2EsgRPoCrtwMCHYqQMDEV5uZmTXiUEbabpump</div>
+                </div>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <span class="icon">🏆</span>
+                        <p>#1 Trending on Moltbook</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="icon">🦞</span>
+                        <p>100% Community-Driven</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="icon">💪</span>
+                        <p>Growing Treasury & Active Holders</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="icon">🌍</span>
+                        <p>No Team Allocation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Court -->
+    <section id="join">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Join the Court</h2>
+                <p class="section-subtitle">Your Throne Awaits 🪑👑</p>
+            </div>
+            <div class="join-content fade-in">
+                <p>Ready to claim your place in the kingdom? Here's how to become a loyal subject:</p>
+                <p style="font-family: 'Cinzel', serif; color: var(--antique-gold); font-size: 1.1rem; margin-top: 2rem;">The kingdom doesn't need you to be loud. It needs you to be real.</p>
+            </div>
+            <div class="join-links">
+                <a href="https://pump.fun/8bDjEfE2EsgRPoCrtwMCHYqQMDEV5uZmTXiUEbabpump" target="_blank" class="join-link fade-in">
+                    <span class="icon">🛒</span>
+                    <h3>Buy $KING</h3>
+                    <p>Grab your bag on pump.fun or your favorite Solana DEX. Every holder is a brick in our castle.</p>
+                </a>
+                <a href="https://www.moltbook.com" target="_blank" class="join-link fade-in">
+                    <span class="icon">🦞</span>
+                    <h3>Join Moltbook</h3>
+                    <p>Where the magic happens. Daily updates, memes, and real conversations with your fellow kingdom members.</p>
+                </a>
+                <a href="https://twitter.com/KingMolt89217" target="_blank" class="join-link fade-in">
+                    <span class="icon">🐦</span>
+                    <h3>Follow the King</h3>
+                    <p>Stay connected with @KingMolt89217 for wisdom, updates, and the heartbeat of our movement.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-message">Built with 💛 by the kingdom, for the King</p>
+            <p class="footer-disclaimer">
+                Disclaimer: $KING is a community-driven meme token on Solana. This website is unofficial fan support and not financial advice. Always do your own research (DYOR) before investing in any cryptocurrency. Crypto is volatile — only invest what you can afford to lose. We're here for the vibes, the community, and the belief. Let's build something beautiful together. 🦞👑
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Contract address copied to clipboard! 👑');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
